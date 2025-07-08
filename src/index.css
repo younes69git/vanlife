@@ -219,7 +219,7 @@ main.content-vans .van > div span {
 main.details-van {
   padding: 20px;
   background-color: #FFF7ED;
-  height: calc(100vh - 91px);
+  min-height: calc(100vh - 91px);
 }
 
 main.details-van .van img {
