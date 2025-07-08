@@ -1,8 +1,9 @@
 import { Link } from "react-router";
+import img from "../../public/kevin-schmid-Mta8r0bxhbo-unsplash.jpg"
 const About = () => {
   return ( 
     <main className="content-about">
-      <img src="/public/kevin-schmid-Mta8r0bxhbo-unsplash.jpg" alt="" />
+      <img src={img} alt="" />
       <div className="container">
         <h1>Don’t squeeze in a sedan when you could relax in a van</h1>
         <p>Our mission is to enliven your road trip with the perfect travel van rental. Our vans are recertified before each trip to ensure your travel plans can go off without a hitch.
