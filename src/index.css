@@ -139,7 +139,7 @@ footer {
 main.content-about {
   background-color: #FFF7ED;
   padding-bottom: 50px;
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 90px);
 }
 .content-about img{
   width: 100%;
