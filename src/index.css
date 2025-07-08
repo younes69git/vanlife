@@ -1,0 +1,332 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: underline;
+  color: black ;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bold-text {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.container{
+  padding: 10px;
+  margin: 0 auto;
+}
+
+/* smaller  */
+@media (min-width:360px) {
+    .container {
+        width: 359px;
+    }
+}
+
+/* small  */
+
+@media (min-width:768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/* medium */
+
+@media (min-width:992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+/* Large */
+
+@media (min-width:1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.header {
+  background-color: #FFF7ED;
+}
+
+.header .container .nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav ul {
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+}
+
+.nav ul li a {
+  font-size: 18px;
+}
+
+main.content {
+  background-image: url(/public/image\ 53.png);
+  background-size: cover;
+  height: calc(100vh - 90px);
+  background-repeat: no-repeat;
+  color: white;
+}
+
+main.content .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-width: 700px;
+}
+
+main.content .container h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+main.content .container p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+main.content .container button {
+  background-color: #FF8C38;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  main.content .container {
+    text-align: center;
+  }
+}
+
+footer {
+  background-color: #252525;
+  padding: 20px;
+  color: #AAAAAA;
+  text-align: center;
+}
+
+main.content-about {
+  background-color: #FFF7ED;
+  padding-bottom: 50px;
+  height: calc(100vh - 90px);
+}
+.content-about img{
+  width: 100%;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+.content-about .explort {
+  margin-top: 40px;
+  background: #FFCC8D;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+}
+
+.content-about .explort button {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.content-about .explort button a {
+  color:white;
+}
+/* @media screen and (min-width:992px){
+  .content-about .explort{
+    margin-inline: auto;
+  }
+  .content-about {
+    text-align:center
+  }
+} */
+
+main.content-vans {
+  background-color:#FFF7ED;
+  padding: 20px;
+  min-height: calc(100vh - 90px);
+}
+
+main.content-vans .vans {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fill , minmax(250px ,1fr));
+}
+main.content-vans .van {
+  cursor: pointer;
+}
+main.content-vans .van img {
+  max-width: 100%;
+  border-radius: 7px;
+}
+
+main.content-vans .van > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+main.content-vans .van > div span {
+  font-size:20px;
+  font-weight: 600;
+}
+
+.van-type {
+  padding: 7px 15px;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  margin-top: 15px;
+  width:fit-content;
+  text-transform: capitalize;
+}
+
+main.details-van {
+  padding: 20px;
+  background-color: #FFF7ED;
+  height: calc(100vh - 91px);
+}
+
+main.details-van .van img {
+  width: 100%;
+  max-height: 550px;
+  border-radius: 7px;
+  object-fit:cover;
+}
+
+main.details-van .van > p {
+  font-weight: 500;
+  color: #161616;
+}
+
+.link-button {
+  background-color: #FF8C38;
+  border: none;
+  color: white;
+  font-size: 1.125rem;
+  padding: 10px;
+  border-radius: 7px;
+  width: 100%;
+  cursor: none;
+}
+
+.host-content {
+  background-color: #FFF7ED;
+  min-height: calc(100vh - 93px);
+  padding-block: 10px;
+}
+
+.host-content .second-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.host-content .second-nav ul li a {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+.host-content .vans {
+  margin-top: 40px;
+  height: 100%;
+}
+
+.host-content .vans .van{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-block: 15px;
+  background-color: white;
+  border-radius: 4px;
+  padding: 15px;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.host-content .vans .van:hover {
+  transition: 0.3s;
+  background-color: #ededed;
+}
+
+.host-content .van div span {
+  display: block;
+}
+
+.host-content .go-back {
+  margin-top: 40px;
+}
+
+.host-content .go-back  a {
+  margin-left: 5px;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.host-content .van-details {
+  margin-top: 40px;
+  background-color: white;
+  padding: 30px;
+  max-width: 100%;
+  border-radius: 7px;
+}
+
+.host-content .van-details .van-nature{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.host-content .van-details .van-nature img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.host-content .van-details nav {
+  margin-block: 30px;
+  display: flex;
+  gap: 15px;
+  font-size: 18px;
+}
+
+.host-content .van-details nav a {
+  font-weight: 500;
+  color: #4d4d4d;
+}
