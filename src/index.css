@@ -87,7 +87,6 @@ ul {
 }
 
 main.content {
-  background-image: url("../public/image\ 53.png");
   background-size: cover;
   height: calc(100vh - 90px);
   background-repeat: no-repeat;
