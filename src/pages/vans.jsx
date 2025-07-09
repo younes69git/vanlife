@@ -1,9 +1,11 @@
 import React from "react";
 import {useState , useEffect} from "react"
-import { Link } from "react-router";
+import { Link , NavLink, useSearchParams } from "react-router";
 
 export function Vans () {
   const[vans , setVans] = useState([])
+  const[searchParams , setSearchParams] = useSearchParams();
+  const typeFilter = searchParams.get("type");
   useEffect(()=>{
     const controller = new AbortController();
     fetch("/api/vans")
@@ -17,19 +19,32 @@ export function Vans () {
     })
     return controller.abort()
   },[])
-  const vansElement = vans.map((van) => {
-    const typesColors = {
-      simple : "#E17654",
-      luxury : "#161616" ,
-      rugged : "#115E59"
-    }
+
+  const typesVans = new Set(vans.map(van => van.type.toLowerCase()));
+  const typesColors = {
+    simple : "#E17654",
+    luxury : "#161616" ,
+    rugged : "#115E59"
+  }
+  const typesVansEl = [...typesVans].map(typeVan => {
+    const filterStyles = typeVan === typeFilter ? {backgroundColor : typesColors[typeFilter] , color:"white"} : null
+    return (
+      <NavLink 
+      end
+      style={filterStyles}
+      to={`?type=${typeVan}`}
+      >{typeVan}</NavLink>
+    )
+})
+  const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter) : vans ;
+  const vansElement = displayedVans.map((van) => {
     return (
       <Link 
-        
+        key={van.id}
         to={`/vans/${van.id}`}
         aria-label={`View details for ${van.name} priced at $${van.price} with type ${van.type}`}
       >
-        <div key={van.id} className="van">
+        <div  className="van">
             <img src={van.imageUrl} alt="" />
             <div>
               <span>{van.name}</span>
@@ -44,6 +59,12 @@ export function Vans () {
     <main className="content-vans">
       <div className="container">
         <h1>Explore our van options</h1>
+        <div className="filter-buttons">
+          <div>
+            {typesVansEl}
+          </div>
+          <Link to="." style={{textDecoration:"underline"}}>Clear filter</Link>
+        </div>
         <div className="vans">
           {vansElement}
         </div>

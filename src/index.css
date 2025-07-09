@@ -15,10 +15,7 @@ a {
   color: black;
 }
 
-a:hover{
-  text-decoration: underline;
-  color: black ;
-}
+
 
 ul {
   list-style: none;
@@ -182,7 +179,31 @@ main.content-vans {
   padding: 20px;
   min-height: calc(100vh - 90px);
 }
-
+main.content-vans .filter-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+main.content-vans .filter-buttons div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+main.content-vans .filter-buttons div a {
+  font-size: 20px;
+  padding: 7px 15px;
+  background-color: #FFEAD0;
+  border-radius: 5px;
+  text-transform: capitalize;
+  transition: 0.2s;
+}
+main.content-vans .filter-buttons div a:hover {
+  background-color: #fad9b1;
+}
 main.content-vans .vans {
   display: grid;
   gap: 25px;
@@ -330,3 +351,5 @@ main.details-van .van > p {
   font-weight: 500;
   color: #4d4d4d;
 }
+
+
