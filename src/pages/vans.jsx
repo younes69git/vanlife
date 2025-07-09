@@ -29,11 +29,15 @@ export function Vans () {
   const typesVansEl = [...typesVans].map(typeVan => {
     const filterStyles = typeVan === typeFilter ? {backgroundColor : typesColors[typeFilter] , color:"white"} : null
     return (
-      <NavLink 
-      end
-      style={filterStyles}
-      to={`?type=${typeVan}`}
-      >{typeVan}</NavLink>
+      // <NavLink 
+      // style={filterStyles}
+      // to={`?type=${typeVan}`}
+      // >{typeVan}</NavLink>
+      <button 
+        key={typeVan}
+        style={filterStyles}
+        onClick={()=> {setSearchParams({type : typeVan})}}
+      >{typeVan}</button>
     )
 })
   const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter) : vans ;
