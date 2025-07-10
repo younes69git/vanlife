@@ -5,7 +5,7 @@ import { Link , NavLink, useSearchParams } from "react-router";
 export function Vans () {
   const[vans , setVans] = useState([])
   const[searchParams , setSearchParams] = useSearchParams();
-  const typeFilter = searchParams.get("type");
+  const typeFilter = searchParams.getAll("type");
   useEffect(()=>{
     const controller = new AbortController();
     fetch("/api/vans")
@@ -26,8 +26,23 @@ export function Vans () {
     luxury : "#161616" ,
     rugged : "#115E59"
   }
+  function handleAddNewParams(key ,value) {
+    setSearchParams(prevParams => {
+      const current = prevParams.getAll("type");
+      const newParams = new URLSearchParams(prevParams);
+      if(value === null) {
+        newParams.delete(key)
+      }else if (current.includes(value)){
+        newParams.delete(key)
+        current.filter(t => t !== value).forEach(t => newParams.append(key , t))
+      }else {
+        newParams.append(key , value)
+      }
+      return newParams;
+    })
+  }
   const typesVansEl = [...typesVans].map(typeVan => {
-    const filterStyles = typeVan === typeFilter ? {backgroundColor : typesColors[typeFilter] , color:"white"} : null
+    const filterStyles =  typeFilter.includes(typeVan) ? {backgroundColor : typesColors[typeVan] , color:"white"} : null
     return (
       // <NavLink 
       // style={filterStyles}
@@ -36,11 +51,11 @@ export function Vans () {
       <button 
         key={typeVan}
         style={filterStyles}
-        onClick={()=> {setSearchParams({type : typeVan})}}
+        onClick={() => handleAddNewParams("type" , typeVan)}
       >{typeVan}</button>
     )
 })
-  const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter) : vans ;
+  const displayedVans = typeFilter.length > 0 ? vans.filter(van => typeFilter.includes(van.type.toLowerCase())) : vans ;
   const vansElement = displayedVans.map((van) => {
     return (
       <Link 
