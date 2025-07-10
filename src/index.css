@@ -15,7 +15,9 @@ a {
   color: black;
 }
 
-
+.name-specific {
+  
+}
 
 ul {
   list-style: none;
@@ -28,6 +30,12 @@ ul {
   font-size: 16px;
 }
 
+.go-back {
+  margin-block: 20px;
+}
+.go-back:hover {
+  text-decoration: underline;
+}
 .container{
   padding: 10px;
   margin: 0 auto;
@@ -193,7 +201,7 @@ main.content-vans .filter-buttons div {
   align-items: center;
   gap: 20px;
 }
-main.content-vans .filter-buttons div button {
+main.content-vans .filter-buttons div button , .filter-buttons button {
   font-size: 18px;
   padding: 8px 15px;
   background-color: #FFEAD0;
@@ -201,8 +209,10 @@ main.content-vans .filter-buttons div button {
   text-transform: capitalize;
   transition: 0.2s;
   border: none;
+  cursor: pointer;
 }
-main.content-vans .filter-buttons div button:hover {
+main.content-vans .filter-buttons div button:hover
+,.filter-buttons button:hover {
   background-color: #fad9b1;
 }
 main.content-vans .vans {
@@ -264,7 +274,7 @@ main.details-van .van > p {
   padding: 10px;
   border-radius: 7px;
   width: 100%;
-  cursor: none;
+  cursor: pointer;
 }
 
 .host-content {

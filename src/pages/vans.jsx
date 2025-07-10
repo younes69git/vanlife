@@ -2,6 +2,7 @@ import React from "react";
 import {useState , useEffect} from "react"
 import { Link , NavLink, useSearchParams } from "react-router";
 
+
 export function Vans () {
   const[vans , setVans] = useState([])
   const[searchParams , setSearchParams] = useSearchParams();
@@ -20,26 +21,29 @@ export function Vans () {
     return controller.abort()
   },[])
 
-  const typesVans = new Set(vans.map(van => van.type.toLowerCase()));
-  const typesColors = {
-    simple : "#E17654",
-    luxury : "#161616" ,
-    rugged : "#115E59"
-  }
-  function handleAddNewParams(key ,value) {
-    setSearchParams(prevParams => {
+  // function to apply filtre to vans
+  function handleAddNewParams(key , value) {
+    setSearchParams((prevParams) => {
       const current = prevParams.getAll("type");
       const newParams = new URLSearchParams(prevParams);
       if(value === null) {
-        newParams.delete(key)
+        newParams.delete(key);
       }else if (current.includes(value)){
         newParams.delete(key)
-        current.filter(t => t !== value).forEach(t => newParams.append(key , t))
+        current.filter(v => v !== value).forEach(v => {
+          newParams.append(key , v);
+        })
       }else {
         newParams.append(key , value)
       }
       return newParams;
     })
+  }
+  const typesVans = new Set(vans.map(van => van.type.toLowerCase()));
+  const typesColors = {
+    simple : "#E17654",
+    luxury : "#161616" ,
+    rugged : "#115E59"
   }
   const typesVansEl = [...typesVans].map(typeVan => {
     const filterStyles =  typeFilter.includes(typeVan) ? {backgroundColor : typesColors[typeVan] , color:"white"} : null
@@ -60,7 +64,8 @@ export function Vans () {
     return (
       <Link 
         key={van.id}
-        to={`/vans/${van.id}`}
+        to={van.id}
+        state={{search : searchParams.toString() , types : typeFilter}}
         aria-label={`View details for ${van.name} priced at $${van.price} with type ${van.type}`}
       >
         <div  className="van">
@@ -82,7 +87,12 @@ export function Vans () {
           <div>
             {typesVansEl}
           </div>
-          <Link to="." style={{textDecoration:"underline"}}>Clear filter</Link>
+          {typeFilter.length > 0
+          ? <button 
+              onClick={() => handleAddNewParams("type" , null)} 
+              style={{textDecoration:"underline"}}
+            >Clear filter</button> 
+          : null}
         </div>
         <div className="vans">
           {vansElement}

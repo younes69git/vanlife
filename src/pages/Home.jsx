@@ -1,4 +1,4 @@
-import img from "/public/image 53.png"
+import img from "/public/pexels-inside-patagonia-2153056446-32938122.jpg"
 const Home = () => {
   return ( 
     <>

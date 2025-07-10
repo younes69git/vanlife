@@ -17,7 +17,7 @@ const VanHost = () => {
       return controller.abort()
   },[])
   const vansElement = vans.map(van =>(
-    <Link to={`/host/vansHost/${van.id}`}>
+    <Link to={van.id}>
       <div className="van" key={van.id}>
         <img style={{width:"65px" , height:"65px" , borderRadius:"4px"}} src={van.imageUrl} alt="photo" />
         <div>
